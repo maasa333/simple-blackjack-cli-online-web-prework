@@ -4,7 +4,7 @@ end
 
 def deal_card
   card = rand 1..11
-  rand 1..11
+  card
 end
 
 def display_card_total(card_total)
@@ -26,7 +26,7 @@ end
 def initial_round
   card_total = deal_card + deal_card
   display_card_total(card_total)
-  card_total
+  return card_total
 end
 
 def hit?(card_total)
@@ -54,8 +54,8 @@ def runner
   welcome
   initial_round
   card_total = initial_round
-  hit?("#{card_total}") and display_card_total
-  until card_total > 21
-  end_game
-end
+    until card_total > 21 do
+      hit?(card_total)
+    end
+  end_game(card_total)
 end
